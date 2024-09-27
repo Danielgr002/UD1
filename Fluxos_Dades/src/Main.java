@@ -9,7 +9,7 @@ public class Main {
         try {
             System.out.println(archivo.createNewFile());
         } catch (IOException ex){
-            System.out.println("Error");
+            System.out.println("Erro");
         }
     }
 }
