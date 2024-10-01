@@ -2,9 +2,24 @@ import java.io.Serializable;
 
 public class Estudiant implements Serializable {
     int nota;
-    String asig;
-    public Estudiant(String a, int n){
+
+    public Estudiant(){
+
+    }
+    public Estudiant(int n){
         this.nota=n;
-        this.asig=a;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    @Override
+    public String toString() {
+        return " Nota: "+this.nota;
     }
 }

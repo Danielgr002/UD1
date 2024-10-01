@@ -1,43 +1,57 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Ejercicio1 {
     public static void main(String[] args) {
-        Estudiant asig1 = new Estudiant("Ingles",7);
-        Estudiant asig2 = new Estudiant("Llenguatge de maques",6);
-        Estudiant asig3 = new Estudiant("FOL",5);
-        Estudiant asig4 = new Estudiant("Programacion",5);
-        Estudiant asig5 = new Estudiant("Bases de datos",9);
-        Estudiant asig6 = new Estudiant("Entornos",6);
-        Estudiant asig7 = new Estudiant("Sistemas Informaticos",8);
-        Estudiant[] Notas = new Estudiant[]{asig1,asig2,asig3,asig4,asig5,asig6,asig7};
+        Scanner leer= new Scanner(System.in);
+        Estudiant asig1 = new Estudiant();
+        System.out.println("Nota Ingles: ");
+        asig1.setNota(leer.nextInt());
+        Estudiant asig2 = new Estudiant();
+        System.out.println("Nota Programacio: ");
+        asig2.setNota(leer.nextInt());
+        Estudiant asig3 = new Estudiant();
+        System.out.println("Nota Llenguatge: ");
+        asig3.setNota(leer.nextInt());
+        Estudiant asig4 = new Estudiant();
+        System.out.println("Nota Entorns: ");
+        asig4.setNota(leer.nextInt());
+        Estudiant asig5 = new Estudiant();
+        System.out.println("Nota Fol: ");
+        asig5.setNota(leer.nextInt());
+        Estudiant asig6 = new Estudiant();
+        System.out.println("Nota bd: ");
+        asig6.setNota(leer.nextInt());
+        ArrayList<Estudiant> Notas = new ArrayList<>();
+        Notas.add(asig1);
+        Notas.add(asig2);
+        Notas.add(asig3);
+        Notas.add(asig4);
+        Notas.add(asig5);
+        Notas.add(asig6);
 
-        String nom_fix = "Notas.txt";
-
-        try {
-            FileOutputStream file = new FileOutputStream(nom_fix);
-            ObjectOutputStream out = new ObjectOutputStream(file);
-            out.writeObject(Notas);
-            out.close();
-            file.close();
+        try (ObjectOutputStream oss = new ObjectOutputStream(new FileOutputStream("Notas.dat"))){
+            oss.writeObject(Notas);
         } catch (IOException e){
             e.printStackTrace();
         }
 
-        try{
-            FileInputStream file = new FileInputStream(nom_fix);
-            ObjectInputStream in = new ObjectInputStream(file);
-            Estudiant[] object = (Estudiant[]) in.readObject();
-            in.close();
-            file.close();
-
-            System.out.println(object);
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Notas.dat"))){
+            ArrayList<Estudiant> deserialitzat = (ArrayList<Estudiant>) ois.readObject();
+            int suma=0;
+            int cont=0;
+            for (Estudiant des: deserialitzat){
+                cont++;
+                suma+=des.getNota();
+            }
+            double media=(double) suma/cont;
+            System.out.println("La media es: "+media);
         } catch (IOException e){
             e.printStackTrace();
         } catch (ClassNotFoundException ex){
             ex.printStackTrace();
         }
-
 
 
     }
