@@ -4,8 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Acces_fitxers/Acces_fitxers.iml" filepath="$PROJECT_DIR$/Acces_fitxers/Acces_fitxers.iml" />
       <module fileurl="file://$PROJECT_DIR$/fICHEROS/Ficheros.iml" filepath="$PROJECT_DIR$/fICHEROS/Ficheros.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Fitxers Aleatoris/Fitxers Aleatoris.iml" filepath="$PROJECT_DIR$/Fitxers Aleatoris/Fitxers Aleatoris.iml" />
       <module fileurl="file://$PROJECT_DIR$/Fluxos_Dades/Fluxos_Dades.iml" filepath="$PROJECT_DIR$/Fluxos_Dades/Fluxos_Dades.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Serializacion/Serializacion.iml" filepath="$PROJECT_DIR$/Serializacion/Serializacion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Serializacio/Serializacio.iml" filepath="$PROJECT_DIR$/Serializacio/Serializacio.iml" />
       <module fileurl="file://$PROJECT_DIR$/UD1.iml" filepath="$PROJECT_DIR$/UD1.iml" />
     </modules>
   </component>

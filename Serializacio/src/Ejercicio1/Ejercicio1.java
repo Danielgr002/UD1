@@ -1,3 +1,7 @@
+package Ejercicio1;
+
+import Ejercicio2.Estudiant;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -31,13 +35,13 @@ public class Ejercicio1 {
         Notas.add(asig5);
         Notas.add(asig6);
 
-        try (ObjectOutputStream oss = new ObjectOutputStream(new FileOutputStream("Notas.dat"))){
+        try (ObjectOutputStream oss = new ObjectOutputStream(new FileOutputStream("Notas1.dat"))){
             oss.writeObject(Notas);
         } catch (IOException e){
             e.printStackTrace();
         }
 
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Notas.dat"))){
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Notas1.dat"))){
             ArrayList<Estudiant> deserialitzat = (ArrayList<Estudiant>) ois.readObject();
             int suma=0;
             int cont=0;

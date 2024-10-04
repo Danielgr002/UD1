@@ -1,3 +1,5 @@
+package Ejercicio2;
+
 import java.io.Serializable;
 
 public class Estudiant implements Serializable {
