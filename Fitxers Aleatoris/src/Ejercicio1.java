@@ -4,19 +4,27 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Ejercicio1 {
-    public static void añadir_prin(RandomAccessFile ar) throws IOException{
+    public static void anadir_prin(RandomAccessFile ar) throws IOException{
         try {
             Scanner leer = new Scanner(System.in);
             ar.seek(0);
             System.out.print("Dime el numero: ");
             double a = leer.nextDouble();
-            ar.writeDouble(a);
+            if (ar==null){
+                ar.writeDouble(a);
+            } else{
+                double viejo = ar.readDouble();
+                ar.seek(ar.length());
+                ar.writeDouble(viejo);
+                ar.seek(0);
+                ar.writeDouble(a);
+            }
         }catch (InputMismatchException e){
             System.out.println("Tiene que ser un double.");
         }
     }
 
-    public static void añadir_fin(RandomAccessFile ar) throws IOException{
+    public static void anadir_fin(RandomAccessFile ar) throws IOException{
         try {
             Scanner leer= new Scanner(System.in);
             ar.seek(ar.length());
@@ -62,31 +70,34 @@ public class Ejercicio1 {
         return false;
     }
 
+    public static void mostrar_menu(){
+        System.out.println("Menu: ");
+        System.out.println("1.Afegir numeros double al principi");
+        System.out.println("2.Afegir numeros double al final");
+        System.out.println("3.Mostrar fitxer");
+        System.out.println("4.Sustituir numero");
+        System.out.println("5.Salir");
+        System.out.println("----------------------------------------------");
+        System.out.print("Opcion: ");
+    }
 
     public static void main(String[] args)throws IOException {
         RandomAccessFile archivo = new RandomAccessFile("prueba.txt","rw");
         Scanner leer = new Scanner(System.in);
-        int opcion=0;
+        int opcion;
         do {
             System.out.println("==============================================");
             System.out.println("Tamaño del archivo en byts " + archivo.length());
             System.out.println("==============================================");
-            System.out.println("Menu: ");
-            System.out.println("1.Afegir numeros double al principi");
-            System.out.println("2.Afegir numeros double al final");
-            System.out.println("3.Mostrar fitxer");
-            System.out.println("4.Sustituir numero");
-            System.out.println("5.Salir");
-            System.out.println("----------------------------------------------");
-            System.out.print("Opcion: ");
+            mostrar_menu();
             opcion = leer.nextInt();
 
             switch (opcion) {
                     case 1:
-                        añadir_prin(archivo);
+                        anadir_prin(archivo);
                         break;
                     case 2:
-                        añadir_fin(archivo);
+                        anadir_fin(archivo);
                         break;
                     case 3:
                         llegir(archivo);
