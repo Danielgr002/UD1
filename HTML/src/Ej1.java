@@ -1,8 +1,7 @@
 import java.io.*;
-import java.util.Dictionary;
 import java.util.Scanner;
 
-public class eJ1 {
+public class Ej1 {
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
         System.out.println("Titul de la pagina: ");
